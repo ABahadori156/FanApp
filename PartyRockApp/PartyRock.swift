@@ -13,7 +13,6 @@ class PartyRock {
     private var _videoURL: String!
     private var _videoTitle: String!
     
-    // This keeps outside classes from manipulating our data here
     var imageURL: String {
         return _imageURL
     }

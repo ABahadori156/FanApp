@@ -9,11 +9,11 @@
 import UIKit
 
 class VideoVC: UIViewController {
-    // WKWebView is the new version of WebView that came out but webView isn't deprecated yet so we'll still use it
+    
     @IBOutlet weak var webView: UIWebView!
     
     @IBOutlet weak var titleLbl: UILabel!
-    // This view needs a specific partyRock object
+    
     private var _partyRock: PartyRock!
     
     var partyRock: PartyRock {
@@ -41,9 +41,6 @@ class VideoVC: UIViewController {
         self.dismiss(animated: true, completion: {})
     }
 
-    /*
   
-     in Segueways we initialize the data in the prepare for segueway, and then in viewDidLoad it will load it
-    */
 
 }
