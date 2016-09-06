@@ -27,10 +27,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let urlTest4 = "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Fql23fCmUDU\" frameborder=\"0\" allowfullscreen></iframe>"
         
-        let p1 = PartyRock(imageURL: "http://www.wavefm.com.au/images/stories/2015/04/redfoo.jpg", videoURL: urlTest, videoTitle: "Where the Sun Goes Down")
+        let p1 = PartyRock(imageURL: "http://www.wavefm.com.au/images/stories/2015/04/redfoo.jpg", videoURL: urlTest, videoTitle: "Lights Out")
         
-        let p2 = PartyRock(imageURL: "http://www.croshalgroup.com/wp-content/uploads/2015/05/Redfoo-Website.jpg", videoURL: urlTest2, videoTitle: "Upside Inside Out")
-        let p3 = PartyRock(imageURL: "https://i.ytimg.com/vi/2wUxw6GH3IM/hqdefault.jpg", videoURL: urlTest3, videoTitle: "Swimming with Leviathan")
+        let p2 = PartyRock(imageURL: "http://www.croshalgroup.com/wp-content/uploads/2015/05/Redfoo-Website.jpg", videoURL: urlTest2, videoTitle: "Let's Get Ridiculous")
+        let p3 = PartyRock(imageURL: "https://i.ytimg.com/vi/2wUxw6GH3IM/hqdefault.jpg", videoURL: urlTest3, videoTitle: "Juicy Wiggle Lesson")
         let p4 = PartyRock(imageURL: "http://www.billboard.com/files/styles/article_main_image/public/media/lmfao-party-rock-anthem-2011-billboard-650.jpg", videoURL: urlTest4, videoTitle: "Party Rock Commercial")
         
         partyRocks.append(p1)
@@ -65,6 +65,22 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //How many rows do you want in your table view?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return partyRocks.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let partyRock = partyRocks[indexPath.row]
+        
+        performSegue(withIdentifier: "VideoVC", sender: partyRock)
+    }
+    
+    
+    // We're grabbing the destination VC, we're grabbing the partyRock object that we passed in from the performSegue at the didSelectRow method, 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? VideoVC {
+            if let party = sender as? PartyRock {
+                destination.partyRock = party
+            }
+        }
     }
 
 }
